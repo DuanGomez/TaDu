@@ -3,7 +3,7 @@ import {
   signal, inject
 } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { YoutubeService } from '../../services/youtube.service';
+import { AudioService } from '../../services/audio.service';
 import { SONG_CONFIG } from '../../song.config';
 
 @Component({
@@ -28,7 +28,7 @@ export class LyricsComponent implements OnInit, OnDestroy {
   private prevIndex  = -2;
   private busy       = false;
 
-  private youtube = inject(YoutubeService);
+  private audio = inject(AudioService);
 
   ngOnInit() {
     this.syncInterval = setInterval(() => this.tick(), 150);
@@ -36,9 +36,9 @@ export class LyricsComponent implements OnInit, OnDestroy {
   }
 
   private tick() {
-    const t = this.youtube.getCurrentTime();
-    const ready = this.youtube.isReady();
-    this.isPlaying.set(ready && t > 0);
+    const t     = this.audio.getCurrentTime();
+    const ready = this.audio.isPlaying();
+    this.isPlaying.set(ready);
 
     // Buscar índice actual por tiempo
     let idx = -1;
