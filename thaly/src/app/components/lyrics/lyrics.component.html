@@ -1,0 +1,63 @@
+<section class="lyrics-section">
+
+  <div class="top-bar" aria-hidden="true"></div>
+
+  <!-- Visualizador de barras -->
+  <div class="visualizer" [class.playing]="isPlaying()" aria-hidden="true">
+    @for (h of barHeights(); track $index) {
+      <div class="bar" [ngStyle]="{ height: h + '%' }"></div>
+    }
+  </div>
+
+  <!-- Label -->
+  <div class="lyrics-header">
+    <p class="now-playing-label">reproduciendo para ti</p>
+  </div>
+
+  <!-- Karaoke: una sola línea a la vez -->
+  <div class="karaoke-stage">
+    <p class="karaoke-lyric" [class.visible]="lyricVisible()" [class.easter-egg]="isEasterEgg()">
+      {{ displayedLyric() }}
+    </p>
+  </div>
+
+  <!-- Snoopy + Spotify -->
+  <div class="cta-area">
+
+    <div class="snoopy-dance-wrapper">
+      <img class="snoopy-star-img" src="images/1034396_6b1cb.png" alt="Snoopy"/>
+    </div>
+
+    <div class="spotify-block">
+      <a
+        class="spotify-btn"
+        [href]="spotifyUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Agregar a Me gusta en Spotify"
+      >
+        <svg class="spotify-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.516 17.318a.748.748 0 01-1.03.25c-2.819-1.722-6.365-2.112-10.542-1.157a.748.748 0 01-.334-1.459c4.571-1.044 8.492-.595 11.656 1.337a.748.748 0 01.25 1.029zm1.474-3.28a.936.936 0 01-1.287.308c-3.225-1.982-8.142-2.557-11.959-1.399a.937.937 0 01-.575-1.786c4.356-1.323 9.768-.682 13.513 1.59a.937.937 0 01.308 1.287zm.127-3.408C15.338 8.424 8.84 8.208 5.14 9.325a1.125 1.125 0 11-.651-2.152c4.248-1.286 11.305-1.038 15.768 1.553a1.125 1.125 0 01-1.14 1.904z" fill="currentColor"/>
+        </svg>
+        <span>Agregar a mis Me gusta</span>
+        <span class="btn-heart">&#9829;</span>
+      </a>
+      <p class="spotify-sub">abréla en Spotify y guárdala</p>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Footer -->
+  <div class="footer-msg">
+    <p>hecho con mucho amor para ti</p>
+  </div>
+
+  <!-- Rosas decorativas al fondo (giradas) -->
+  <div class="roses-bottom" aria-hidden="true">
+    <img src="images/petalos-rosa-rojos-romanticos-sobre-fondo-blanco_73344-422.avif" alt=""/>
+  </div>
+
+</section>

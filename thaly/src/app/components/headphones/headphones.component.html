@@ -1,0 +1,40 @@
+<section class="headphones-section" #section>
+
+  <!-- Particles -->
+  <div class="particles" aria-hidden="true">
+    @for (i of [1,2,3,4,5,6,7,8]; track i) {
+      <span class="particle" [style]="'--i:' + i"></span>
+    }
+  </div>
+
+  <!-- Snoopy love sticker (flotante, fondo oscuro) -->
+  <div class="snoopy-love-bubble" [class.visible]="headphonesOn()">
+    <img src="images/Snoopy-Christmas-Free-PNG-Image.png" alt="Snoopy con corazon" class="snoopy-love-img"/>
+  </div>
+
+  <!-- Snoopy con audifonos (SVG animado) -->
+  <div class="snoopy-stage" [class.active]="headphonesOn()">
+    <div class="stage-glow"></div>
+    <div class="ripple" [class.playing]="headphonesOn()">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+    </div>
+    <img
+      class="snoopy-png"
+      src="images/image-removebg-preview12.png"
+      alt="Snoopy bailando"
+    />
+  </div>
+
+  <!-- Texto -->
+  <div class="headphones-text" [class.visible]="textVisible()">
+    <p class="pre-text">y ahora...</p>
+    <h2 class="main-text">esta cancion<br>es para ti</h2>
+    <p class="sub-text">baja un poquito mas para esucharla</p>
+  </div>
+
+  <!-- YouTube player oculto -->
+  <div id="yt-player" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
+
+</section>

@@ -1,0 +1,220 @@
+.lyrics-section {
+  position: relative;
+  min-height: 100dvh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 3rem;
+  overflow: hidden;
+}
+
+// ─── Rosas en el footer ───────────────────────────────────────────────────────
+.roses-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 48vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transform: rotate(180deg);
+    opacity: 0.88;
+  }
+}
+
+// ─── Top bar ──────────────────────────────────────────────────────────────────
+.top-bar {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(26,42,108,0.1), var(--red), rgba(26,42,108,0.1));
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+// ─── Visualizer ───────────────────────────────────────────────────────────────
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 40px;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+
+  .bar {
+    width: 5px;
+    background: var(--red);
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    transition: height 0.2s ease;
+    opacity: 0.28;
+  }
+
+  &.playing .bar { opacity: 1; }
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+.lyrics-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.now-playing-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+// ─── Karaoke stage ────────────────────────────────────────────────────────────
+.karaoke-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem 2.5rem;
+  min-height: 180px;
+  position: relative;
+  z-index: 1;
+}
+
+.karaoke-lyric {
+  font-family: var(--font-label);
+  font-size: clamp(1.45rem, 6.2vw, 2.1rem);
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  &.easter-egg {
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    color: rgba(26, 42, 108, 0.45);
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ─── CTA area ─────────────────────────────────────────────────────────────────
+.cta-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.snoopy-dance-wrapper {
+  animation: fade-in-up 0.7s ease both;
+}
+
+.snoopy-star-img {
+  width: 120px;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  animation: snoopy-star-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes snoopy-star-bounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-12px) rotate(2deg); }
+}
+
+.spotify-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.spotify-label {
+  font-family: var(--font-label);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--navy);
+  opacity: 0.85;
+}
+
+.spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #1DB954;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 0.85rem 1.8rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(29,185,84,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+
+  &:hover, &:active {
+    transform: scale(1.05);
+    box-shadow: 0 6px 28px rgba(29,185,84,0.45);
+  }
+}
+
+.spotify-icon { width: 22px; height: 22px; flex-shrink: 0; }
+
+.btn-heart {
+  font-size: 1.1rem;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.spotify-sub {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(26, 42, 108, 0.4);
+  letter-spacing: 0.05em;
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+.footer-msg {
+  margin-top: 3rem;
+  margin-bottom: 52vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+
+  p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(26, 42, 108, 0.35);
+    letter-spacing: 0.05em;
+  }
+}

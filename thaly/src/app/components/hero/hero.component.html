@@ -1,0 +1,40 @@
+<section class="hero" [class.visible]="visible()">
+
+  <!-- Rosas decorativas en la parte superior -->
+  <div class="roses-top" aria-hidden="true">
+    <img src="images/petalos-rosa-rojos-romanticos-sobre-fondo-blanco_73344-422.avif" alt=""/>
+  </div>
+
+  <!-- Estrellas sutiles -->
+  <div class="night-sky" aria-hidden="true">
+    @for (s of stars; track s.id) {
+      <span class="star" [ngStyle]="{
+        left: s.x + '%', top: s.y + '%',
+        width: s.size + 'px', height: s.size + 'px',
+        'animation-delay': s.delay + 's',
+        'animation-duration': s.dur + 's'
+      }"></span>
+    }
+  </div>
+
+  <!-- Charlie Brown y Snoopy — fondo transparente -->
+  <div class="image-wrap">
+    <img class="snoopy-img" src="images/image-removebg-preview.png" alt="Charlie Brown y Snoopy"/>
+  </div>
+
+  <!-- Texto encima, parte baja -->
+  <div class="hero-text" [class.visible]="visible()">
+    <span class="badge">para ti</span>
+    <h1 class="name">{{ recipientName }}</h1>
+    <p class="tagline">una sorpresita</p>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button class="scroll-indicator" (click)="scrollDown()" [class.visible]="visible()" aria-label="Bajar">
+    <span class="scroll-label">scroll</span>
+    <div class="scroll-icon">
+      <div class="scroll-dot"></div>
+    </div>
+  </button>
+
+</section>

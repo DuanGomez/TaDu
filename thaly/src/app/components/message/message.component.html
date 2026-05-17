@@ -1,0 +1,93 @@
+<section class="message-section" #section>
+
+  <!-- Stars (decorative, about white background) -->
+  <div class="msg-stars" aria-hidden="true">
+    @for (s of msgStars; track s.id) {
+      <span class="msg-star" [ngStyle]="{
+        left: s.x + '%', top: s.y + '%',
+        width: s.size + 'px', height: s.size + 'px',
+        'animation-delay': s.delay + 's',
+        'animation-duration': s.dur + 's'
+      }"></span>
+    }
+  </div>
+
+  <!-- Separador superior sutil -->
+  <div class="section-divider-top" aria-hidden="true"></div>
+
+  <!-- Section label -->
+  <p class="section-label">un mensajito</p>
+
+  <!-- Envelope -->
+  <div class="envelope-area">
+    <div class="envelope-wrap" (click)="openLetter()" role="button" aria-label="Abrir carta">
+      <div class="envelope" [class.open]="envelopeOpen()">
+        <div class="env-back">
+          <div class="env-fold"></div>
+          <div class="env-letter">
+            <div class="ltr-line"></div>
+            <div class="ltr-line"></div>
+            <div class="ltr-line short"></div>
+          </div>
+        </div>
+        <div class="env-flap">
+          <div class="env-seal">&#9829;</div>
+        </div>
+      </div>
+      <p class="env-hint" [class.hide]="envelopeOpen()">toca para leer tu carta</p>
+    </div>
+  </div>
+
+  <!-- Separador inferior sutil -->
+  <div class="section-divider-bottom" aria-hidden="true"></div>
+
+</section>
+
+<!-- Snoopy companion -->
+<div
+  class="snoopy-companion"
+  [class.visible]="snoopyVisible()"
+  [ngStyle]="{
+    transform: 'translateX(' + snoopyX() + 'px) translateY(' + snoopyY() + 'px)'
+  }"
+>
+  @for (h of hearts; track h.id) {
+    <span class="companion-heart" [class.active]="h.active" [ngStyle]="{ left: h.x + '%' }">&#9825;</span>
+  }
+  <img
+    class="snoopy-walk-img"
+    src="images/snoopy-walk.png"
+    alt="Snoopy"
+    [class.flipped]="snoopyFlipped()"
+  />
+</div>
+
+<!-- Modal de la carta -->
+@if (modalOpen()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <span class="modal-label">Contigo</span>
+        <h2 class="modal-title">todo me sale<br>natural</h2>
+        <div class="modal-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        @for (para of paragraphs; track $index) {
+          <p class="modal-para">{{ para }}</p>
+        }
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-close-btn" (click)="closeModal()" aria-label="Cerrar carta">
+          <span>&#9829;</span>
+          <span>cerrar</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
