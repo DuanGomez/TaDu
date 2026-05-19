@@ -1,9 +1,10 @@
 import {
-  Component, OnInit, OnDestroy,
+  Component, OnInit, OnDestroy, AfterViewInit,
+  ElementRef, ViewChild,
   signal, inject
 } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { AudioService } from '../../services/audio.service';
+import { YoutubeService } from '../../services/youtube.service';
 import { SONG_CONFIG } from '../../song.config';
 
 @Component({
@@ -13,7 +14,9 @@ import { SONG_CONFIG } from '../../song.config';
   templateUrl: './lyrics.component.html',
   styleUrl: './lyrics.component.scss',
 })
-export class LyricsComponent implements OnInit, OnDestroy {
+export class LyricsComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('section') sectionRef!: ElementRef<HTMLElement>;
+
   lyrics    = SONG_CONFIG.lyrics;
   spotifyUrl = SONG_CONFIG.spotifyUrl;
 
@@ -27,18 +30,33 @@ export class LyricsComponent implements OnInit, OnDestroy {
   private barInterval:  ReturnType<typeof setInterval> | null = null;
   private prevIndex  = -2;
   private busy       = false;
+  private armed          = false;
+  private sectionVisible = false;
 
-  private audio = inject(AudioService);
+  private youtube = inject(YoutubeService);
 
   ngOnInit() {
     this.syncInterval = setInterval(() => this.tick(), 150);
     this.barInterval  = setInterval(() => this.animateBars(), 200);
   }
 
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        this.sectionVisible = entry.isIntersecting;
+        if (entry.isIntersecting && !this.armed) {
+          this.armed = true;
+          this.youtube.playOnNextTouch(() => this.sectionVisible);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(this.sectionRef.nativeElement);
+  }
+
   private tick() {
-    const t     = this.audio.getCurrentTime();
-    const ready = this.audio.isPlaying();
-    this.isPlaying.set(ready);
+    const t = this.youtube.getCurrentTime();
+    this.isPlaying.set(this.youtube.isReady() && t > 0);
 
     // Buscar índice actual por tiempo
     let idx = -1;

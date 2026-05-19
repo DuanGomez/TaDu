@@ -1,7 +1,4 @@
-import {
-  Component, AfterViewInit, ElementRef, ViewChild, signal, inject
-} from '@angular/core';
-import { AudioService } from '../../services/audio.service';
+import { Component, AfterViewInit, ElementRef, ViewChild, signal } from '@angular/core';
 
 @Component({
   selector: 'app-headphones',
@@ -15,25 +12,16 @@ export class HeadphonesComponent implements AfterViewInit {
 
   headphonesOn = signal(false);
   textVisible  = signal(false);
-  musicStarted = false;
-
-  private audio = inject(AudioService);
 
   ngAfterViewInit() {
-    this.audio.init('sounds/Una tarde juntos - Darviin.mp3');
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+        if (entry.isIntersecting) {
           this.headphonesOn.set(true);
           setTimeout(() => this.textVisible.set(true), 600);
-          if (!this.musicStarted) {
-            this.musicStarted = true;
-            setTimeout(() => this.audio.play(), 1400);
-          }
         }
       },
-      { threshold: 0.45 }
+      { threshold: 0.1 }
     );
     observer.observe(this.sectionRef.nativeElement);
   }
