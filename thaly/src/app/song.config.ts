@@ -5,7 +5,7 @@
 export const SONG_CONFIG = {
   recipientName: 'Thaly',
 
-  message: `Amarte es el sentimiento más bonito q tengo en estos momentos, cuando estoy contigo me siento como en un campo tranquilo lleno de flores, al estar a tu lado percibo el calor de tu amor y cuando hay un mínimo roce entre nosotros puedo experimentar todo el amor q existe en una sola persona. Estoy muy agradecido de poder compartir tantos bellos momentos contigo y estoy seguro de q te volvería a elegir una y mil veces.`,
+  message: `Si vas a seguir mirandome como me miras, mejor te doy beso de una vez, porque me rindo cada vez que te comienzas a reir y me miras con esos hermosos ojos. Quedate muy cerca, porque ya me he quedado sin defensas y loco por ti, me he quitado mi chaleco y realmente no puedo ni alcanzar a explicarte lo que siento por ti, son cosas que ni que con el contacto fisico alcanzo a describir, necesito conectarme con tu alma.`,
 
   // YouTube: video ID, segundo de inicio y fin del clip
   youtubeVideoId: 'qNHcVevz7wo',
