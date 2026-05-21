@@ -1,7 +1,7 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { NgStyle } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { SONG_CONFIG } from '../../song.config';
-import { AudioService } from '../../services/audio.service';
 
 interface Star {
   id: number; x: number; y: number;
@@ -11,15 +11,13 @@ interface Star {
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [NgStyle],
+  imports: [NgStyle, RouterLink],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent implements OnInit {
   recipientName = SONG_CONFIG.recipientName;
   visible = signal(false);
-
-  private audio = inject(AudioService);
 
   stars: Star[] = Array.from({ length: 35 }, (_, i) => ({
     id: i,
@@ -32,8 +30,5 @@ export class HeroComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => this.visible.set(true), 80);
-    this.audio.init('sounds/ssstik.io_1779213128784.mp3');
   }
-
-  scrollDown() { window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }
 }

@@ -5,7 +5,7 @@
 export const SONG_CONFIG = {
   recipientName: 'Thaly',
 
-  message: `Si vas a seguir mirandome como me miras, mejor te doy beso de una vez, porque me rindo cada vez que te comienzas a reir y me miras con esos hermosos ojos. Quedate muy cerca, porque ya me he quedado sin defensas y loco por ti, me he quitado mi chaleco y realmente no puedo ni alcanzar a explicarte lo que siento por ti, son cosas que ni que con el contacto fisico alcanzo a describir, necesito conectarme con tu alma.`,
+  message: `Si vas a seguir mirandome como me miras, mejor te doy beso de una vez, porque me rindo cada vez que te comienzas a reir y me miras con esos hermosos ojos. Quedate muy cerca, porque ya me he quedado sin defensas y loco por ti, me he quitado mi chaleco y realmente no puedo ni alcanzar a explicarte lo que siento por ti, son cosas que ni con el contacto fisico alcanzo a describir, necesito conectarme con tu alma.`,
 
   // YouTube: video ID, segundo de inicio y fin del clip
   youtubeVideoId: 'qNHcVevz7wo',

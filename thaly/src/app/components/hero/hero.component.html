@@ -17,24 +17,21 @@
     }
   </div>
 
-  <!-- Charlie Brown y Snoopy — fondo transparente -->
+  <!-- Charlie Brown y Snoopy -->
   <div class="image-wrap">
     <img class="snoopy-img" src="images/image-removebg-preview.png" alt="Charlie Brown y Snoopy"/>
   </div>
 
-  <!-- Texto encima, parte baja -->
+  <!-- Texto -->
   <div class="hero-text" [class.visible]="visible()">
     <span class="badge">para ti</span>
     <h1 class="name">{{ recipientName }}</h1>
     <p class="tagline">una sorpresita</p>
   </div>
 
-  <!-- Scroll indicator -->
-  <button class="scroll-indicator" (click)="scrollDown()" [class.visible]="visible()" aria-label="Bajar">
-    <span class="scroll-label">scroll</span>
-    <div class="scroll-icon">
-      <div class="scroll-dot"></div>
-    </div>
-  </button>
+  <!-- Botón flor -->
+  <a class="flower-btn" routerLink="/flores" [class.visible]="visible()" aria-label="Ver flores">
+    🌸
+  </a>
 
 </section>
