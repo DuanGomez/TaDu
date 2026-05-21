@@ -1,12 +1,7 @@
 .hero {
   position: relative;
   min-height: 100dvh;
-  background: linear-gradient(180deg,
-    #fdeef4  0%,
-    #f8f0ff 30%,
-    #f3eeff 48%,
-    #ffffff 68%
-  );
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +16,8 @@
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image:         linear-gradient(to bottom, black 40%, transparent 100%);
 
   img {
     width: 100%;
